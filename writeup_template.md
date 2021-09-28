@@ -11,11 +11,11 @@ The goals / steps of this project are the following:
 **Example**
 
 Before:
-![Preprocess]: (./test_images/solidWhiteCurve.jpg)
+![Preprocess](./test_images/solidWhiteCurve.jpg)
 
 After:
 
-![Processed]: (./test_images_output/solidWhiteCurve.jpg)
+![Processed](./test_images_output/solidWhiteCurve.jpg)
 
 ---
 
