@@ -1,9 +1,5 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Finding Lane Lines on the Road**
@@ -12,10 +8,14 @@ The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
 * Reflect on your work in a written report
 
+**Example**
 
-[//]: # (Image References)
+Before:
+[Preprocess]: [./test_images/solidWhiteCurve.jpg]
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+After:
+
+[Processed]: [./test_images_output/solidWhiteCurve.jpg]
 
 ---
 
@@ -23,9 +23,21 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 6 steps. First, I converted the images to grayscale, then I applied smoothing.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+After that, image went through Canny edge detection and got cut so that only highway was left. 
+
+With that image, since only lane lines were visible, I extracted the coordinates of the lines through Hough Transform.
+
+Using those coordinates, I drew lines over the lanes.
+
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by creating 4 arrays
+
+that holds x and y coordinates of the right and left lane. Slope of the right lane was bigger than 0.5, while the left lane's slope was
+
+smaller than -0.5. Using that, I sorted them out but added an upper limit for the slope to filter out outliers. After I found the slope
+
+I found the starting and ending points and drew a line through them. 
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
@@ -35,13 +47,15 @@ If you'd like to include images to show how the pipeline works, here is how to i
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+One potential shortcoming would be what would happen when lanes curve.
 
-Another shortcoming could be ...
+Currently, polifyt is of the first degree and cannot draw curved lines.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to use higher degree polyfit to draw curved lines.
 
-Another potential improvement could be to ...
+Another potential improvement would be to use clustering algorithm instead of polyfit. That would include points within certain radius
+
+where radius would be the distance between dashed lines.
