@@ -11,11 +11,11 @@ The goals / steps of this project are the following:
 **Example**
 
 Before:
-[Preprocess]: [./test_images/solidWhiteCurve.jpg]
+![Preprocess]: (./test_images/solidWhiteCurve.jpg)
 
 After:
 
-[Processed]: [./test_images_output/solidWhiteCurve.jpg]
+![Processed]: (./test_images_output/solidWhiteCurve.jpg)
 
 ---
 
@@ -38,10 +38,6 @@ that holds x and y coordinates of the right and left lane. Slope of the right la
 smaller than -0.5. Using that, I sorted them out but added an upper limit for the slope to filter out outliers. After I found the slope
 
 I found the starting and ending points and drew a line through them. 
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
